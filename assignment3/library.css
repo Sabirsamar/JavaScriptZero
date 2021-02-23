@@ -3,7 +3,7 @@ body {
     background-color: rgb(194, 235, 238);
     margin: 0;
     font-size: 21px;
-    display:flow-root;
+    display: flow-root;
 }
 
 ul {
@@ -20,6 +20,7 @@ ul {
 ul li {
     float: left;
     /* display: inline ; */
+    display: block;
     border-right: 1px solid #bbb;
 }
 
@@ -51,7 +52,6 @@ td {
     text-align: left;
     width: auto;
     border-right: 1px solid #bbb;
-    
 }
 
 tr:nth-child(odd) {
@@ -61,8 +61,9 @@ tr:nth-child(odd) {
 div#form {
     margin: 70px 0px 50px 400px;
     border: 2px solid rgb(19, 65, 39);
-    width:50%;
+    width: 50%;
 }
+
 input#BookName {
     padding: 10px 5px 10px 5px;
     border-color: rgb(187, 141, 141);
@@ -80,15 +81,16 @@ input#addbook {
     border-radius: 15px;
     border: none;
 }
-p#alertBox{
-	width: 15%;
-	color:whitesmoke;
+
+p#alertBox {
+    width: 15%;
+    color: whitesmoke;
     float: right;
-    margin: 0px 20px 0px ;  
-	position: relative;
+    margin: 0px 20px 0px;
+    position: relative;
 }
 
-.action{
+.action {
     background-color: rgb(118, 162, 163);
     border-radius: 15%;
 }
