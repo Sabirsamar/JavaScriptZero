@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="library.css">
+    <title>Addd Book</title>
+</head>
+
+<body>
+    <navbar>
+        <ul>
+            <li><a href="#" class="active">Sabir's Library</a></li>
+            <li><a href="#">Home</a></li>
+        </ul>
+    </navbar>
+    <p id="alertBox"></p>
+    <form action="" id="bookForm" name="bookForm">
+        <div id="form">
+            
+            <div>
+                <label for="Book Name">Book Name </label><br />
+                <input type="text" id="BookName" name="bookName">
+            </div>
+            <div>
+                <label for="Author Name">Author Name </label><br />
+                <input type="text" id="AuthorName" name="bookAuthor">
+            </div>
+            <div class="bookType">
+                <label for="Book Type">Book Type </label><br />
+                <input type="radio" id="fiction" name="bookType" value="Fiction"><label for="Fiction">Fiction</label><br>
+                <input type="radio" id="programming" name="bookType" value="Programming"><label for="Programming">Programming</label><br>
+                <input type="radio" id="Inspirational" name="bookType" value="Inspirational"><label for="Inspirational">Inspirational</label><br>
+            </div>
+            <div id="addBook"><input type="submit" id="addbook" value="Add Book"></div>
+        </div>
+    </form>
+    <table id="myTable">
+        <p style="text-align: center;">Manage Book</p>
+        <thead>
+            <th>
+                Book
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Book Type
+            </th>
+            <th>
+                Action
+            </th>
+            <th>
+                Date
+            </th>
+        </thead>
+    </table>
+    <script src="library.js"></script>
+</body>
+
+</html>
