@@ -46,7 +46,10 @@ function addBook(e) {
         td.appendChild(span);
         tr.appendChild(td);
         tr.appendChild(datetd);
+
         table.appendChild(tr);
+
+        //
         addLocalMemory(values[0],values[1],values[2],values[3]);
         resetForm(bookName);
         resetForm(authorName);
@@ -56,7 +59,6 @@ function addBook(e) {
     }
 }
 
-//
 // add item funct for local
 
 
@@ -128,10 +130,13 @@ function getLocalMemory() {
     console.log(getBookArray);
     if(getBookArray == null)
     {
-        return "";
+        return null;
     }
-    for (let i = 0; i < getBookArray.books.length; i++) {
-        let bookdata = console.log(getBookArray.books[i]['bookName']);
-        }
+    else{
+        return getBookArray;
+    }
+    // for (let i = 0; i < getBookArray.books.length; i++) {
+    //     let bookdata = console.log(getBookArray.books[i]['bookName']);
+    //     }
 
     }
