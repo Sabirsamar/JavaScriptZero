@@ -1,4 +1,3 @@
-var ac ;    
 //get form data
 let form = document.getElementById('bookForm');
 //get book Type
@@ -8,13 +7,33 @@ let bookName = document.getElementById('BookName');
 //get author Name
 let authorName = document.getElementById('AuthorName');
 
+document.addEventListener("load",getLocalMemory());
 //submit form event
-form.addEventListener('submit', addBook);
+form.addEventListener('submit', addBookhandle);
+
+function addBookhandle(event)
+{
+    if(event != null)
+    {
+        addBook();
+    }
+}
+
+
 
 //addBook function
-function addBook(e) {
-    e.preventDefault();
+function addBook(book = null,author = null,type = null,dateti = null) {
+    //e.preventDefault();
     let dateTime = new Date().toLocaleDateString();
+    if(book!=null)
+    {
+        bookName.value = book;
+        authorName.value = author;
+        bookType.value = type;
+        dateTime = dateti;
+
+    }
+    
 
     if (bookType.value.length <= 0) {
         alert("Please select book type");
@@ -48,46 +67,66 @@ function addBook(e) {
         tr.appendChild(datetd);
 
         table.appendChild(tr);
-
-        //
-        addLocalMemory(values[0],values[1],values[2],values[3]);
-        resetForm(bookName);
-        resetForm(authorName);
+        if(book == null){
+            addLocalMemory(values[0], values[1], values[2], values[3]);
+            resetForm(bookName);
+            resetForm(authorName);
         setFlashMessage("Congratulations!", "Your book is added successfully", "success");
+        }
+    
     } else {
         setFlashMessage("Warning!", "Please enter valid input!", "warning");
     }
 }
 
 // add item funct for local
-
-
-
-function addLocalMemory(bookName,authorName,bookType,dateTime) {
-    let bookObj = {"bookName":bookName,"authorName":authorName,"bookType":bookType,"dateTime":dateTime};
+function addLocalMemory(bookName, authorName, bookType, dateTime) {
+    let bookObj = { "bookName": bookName, "authorName": authorName, "bookType": bookType, "dateTime": dateTime };
     let bookKey = JSON.parse(localStorage.getItem("bookData"));
-    if(bookKey == null)
-    {
+    if (bookKey == null) {
         let books = [];
         books.push(bookObj);
-        bookKey = {books};
+        bookKey = { books };
     }
-    else
-    {
+    else {
         bookKey.books.push(bookObj);
     }
-    localStorage.setItem("bookData",JSON.stringify(bookKey));
+    localStorage.setItem("bookData", JSON.stringify(bookKey));
 
 }
 
+function isprime(n)
+{
+    if(isNaN(n))
+    {
+        return false;
+    }
+    else{
+        for(let i = 2;i<n;i++)
+        {
+            if(n%i==0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+// deleted row 
 function deleteBook() {
     let currentRow = this.parentNode.parentNode.parentNode;
+    //alert(currentRow.rowIndex);
     if (currentRow) {
+        
         currentRow.remove();
+        
         setFlashMessage("Congratulations!", "Your book has been removed successfully", "success");
     }
 }
 
+//flash message on screen
 function setFlashMessage(boldText, normalText, type) {
     let messageBox = document.getElementById('alertBox');
     let newSpan = document.createElement('span');
@@ -102,8 +141,10 @@ function setFlashMessage(boldText, normalText, type) {
     setTimeout(function () {
         messageBox.innerHTML = "";
     }, 2000);
+    location.reload();
 }
 
+//validated book and author name
 function validateInput() {
     if (bookName.value.length >= 5 && bookName.value.length <= 20 && isNaN(bookName.value) && authorName.value.length > 0) {
         return true;
@@ -111,32 +152,41 @@ function validateInput() {
     return false;
 }
 
+// reset input data
 function resetForm(e) {
     e.value = "";
 }
-// get values from local value
 
-// function getLocalMemorys(){
-//     console.log("local storage");
-//     for (let i = 0; i < localStorage.length; i++)   {
-//     console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
-// }
-
-// }
-
+//read book data from local memory
 function getLocalMemory() {
     let getBookArray = JSON.parse(localStorage.getItem("bookData"));
 
-    console.log(getBookArray);
-    if(getBookArray == null)
-    {
+    if (getBookArray == null) {
         return null;
     }
-    else{
+    else {
+        for (let i = 0; i < getBookArray.books.length; i++) {
+
+            let book = getBookArray.books[i].bookName;
+            let author = getBookArray.books[i].authorName;
+            let type = getBookArray.books[i].bookType;
+            let dateti = getBookArray.books[i].dateTime;
+            addBook(book, author, type,dateti);
+        }
         return getBookArray;
     }
-    // for (let i = 0; i < getBookArray.books.length; i++) {
-    //     let bookdata = console.log(getBookArray.books[i]['bookName']);
-    //     }
+}
 
+
+//Search book data
+function searchBook(bookname, author, type, date){
+    let getBookItem = JSON.parse(localStorage.getItem("bookData")); 
+    for(let i= 0 ; i<=getBookItem.books.length - 1; i++) {
+      // console.log(getBookItem.books[i]);
+      //console.log(bookname+"::"+author+"::"+type+"::"+date);
+      //console.log(getBookItem.books[i]["bookName"]+"::"+getBookItem.books[i]["authorName"]+"::"+getBookItem.books[i]["bookType"]+"::"+getBookItem.books[i]["dateTime"]);
+        if(getBookItem.books[i]["bookName"] == bookname && getBookItem.books[i]["authorName"] == author && getBookItem.books[i]["bookType"] == type && getBookItem.books[i]["dateTime"] == date) {
+            return i;
+        }
     }
+}
