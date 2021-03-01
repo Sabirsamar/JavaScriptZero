@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11 Nested Array</title>
+</head>
+<body>
+    <script>
+        let activities = [
+            ['Work' ,9],
+            ['Eat' ,1],
+            ['Compute' ,2],
+            ['Play Game' ,1],
+            ['Sleep' ,7]
+        ];
+       // console.log(activities.length);
+        for(let i = 0; i<=activities.length - 1; i++){
+            // console.log(activities[i]);
+            let length2 = activities[i].length;
+            for(j = 0; j<=length2 - 1; j++){
+                console.log("Index: " + [i] + " Activities: " + activities[i][j]);
+            }
+        }
+    </script>
+</body>
+</html>

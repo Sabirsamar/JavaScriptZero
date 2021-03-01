@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 Sum Even and Odd</title>
+</head>
+<body>
+    <p>Write a program that takes an integer Array of N elements and prints sum of even numbers and sum of odd numbers within the Array.</p>
+    <script>
+        let array1 = [2,1,4, 5, 3, 13, 11, 6];
+        let evenSum = 0;
+        let oddSum = 0;
+        for(let i = 0; i <= array1.length - 1; i++) {
+            if(array1[i] % 2 === 0){
+                evenSum = evenSum + array1[i];
+            } else {
+                oddSum = oddSum + array1[i];
+            }
+           
+        }
+        console.log(evenSum, oddSum);
+    </script>
+</body>
+</html>
