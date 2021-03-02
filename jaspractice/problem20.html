@@ -10,15 +10,23 @@
 
 <body>
     <script>
-        function leapYear(year) {
-            for (let n = 1; n <= 20; n++) {
-                document.write(n);
-            }
-            if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
 
-                return `${year} is leap year.`;
-            } else {
+        function leapYear(year) {
+            if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)) {
+                console.log(year);
+                return true;
+            }
+            else {
                 return false;
+            }
+        }
+        function countLeapYear(targetYear) {
+            let n = 20;
+            while (n >= 1) {
+                if (leapYear(targetYear)) {
+                    n--;
+                }
+                targetYear += 1;
             }
         }
     </script>
