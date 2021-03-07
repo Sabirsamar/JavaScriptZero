@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 1</title>
+</head>
+
+<body>
+    <script>
+        var arraydata = [-2, -3, 4, -6, 0, 7, 9, 11];
+
+        function averageCount(arraydata) {
+
+            let positiveCount = 0;
+            let negativeCount = 0;
+
+            for (let i = 0; i < arraydata.length; i++) {
+
+                if (arraydata[i] < 0) {
+
+                    negativeCount++;
+
+                } else {
+
+                    positiveCount += 1;
+
+                }
+            }
+            document.write("-Ve Count is: " + negativeCount + "<br/>");
+            document.write("+Ve Count is: " + positiveCount + "<br/>");
+            document.write(`Ratio of negative number is: ${negativeCount / arraydata.length} and positive is: ${positiveCount / arraydata.length}`);
+        }
+        averageCount();
+    </script>
+</body>
+
+</html>

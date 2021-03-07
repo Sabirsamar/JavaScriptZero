@@ -1,9 +1,8 @@
 let btnaddnotes = document.getElementById("btnAddNotes");
 
+document.addEventListener('load', getNotes());
+
 btnaddnotes.addEventListener("click", createNotes);
-
-var notesArray = [];
-
 /*
 Display Notes and
 Add add to local memory
@@ -12,20 +11,28 @@ function createNotes() {
     var title = document.getElementById("notesTitle").value;
     var description = document.getElementById("notesDescription").value;
 
-    console.log(description + ',', title);
+    // console.log(description + ',', title);
 
     //validate input
     if (title == '' || description == '') {
         alertMessage("Please enter valid input!", "warning");
         return true;
-    }
-    else {
+    } else {
         let notesObj = { title: title, description: description };
-        notesArray.push(notesObj);
-        console.log(notesArray);
-        localStorage.setItem("notesRecord", JSON.stringify(notesArray));
+
+        let getLocalData = JSON.parse(localStorage.getItem("notesRecord"));
+        if (getLocalData == null) {
+            let notesArray = [];
+            notesArray.push(notesObj);
+            getLocalData = { notesArray }
+        } else {
+            getLocalData.notesArray.push(notesObj);
+        }
+        // console.log(notesArray);
+        localStorage.setItem("notesRecord", JSON.stringify(getLocalData));
 
         createNotesElement(title, description);
+        getNotes();
         alertMessage("Notes added successfully!", "success");
         resetForm();
     }
@@ -56,6 +63,7 @@ function createNotesElement(title, description) {
     button_del.setAttribute("class", "btn btn-primary");
     button_del.setAttribute("type", "button");
     button_del.innerText = "Delete Note";
+    button_del.addEventListener("click", deleteNotes);
 
     // append notes data to element
     h5_title.innerText = title;
@@ -89,7 +97,7 @@ function resetForm() {
 
 function alertMessage(message, className) {
     let div = document.createElement('div');
-    div.className = 'alert alert-'+ className;
+    div.className = 'alert alert-' + className;
     div.appendChild(document.createTextNode(message));
 
     let container = document.querySelector(".container");
@@ -100,7 +108,41 @@ function alertMessage(message, className) {
 
     setTimeout(() => {
         document.querySelector('.alert').remove()
-        
-    }, 3000);
 
+    }, 3000);
+    location.reload();
+
+}
+
+/*
+  Get local storage value
+*/
+function getNotes() {
+    let notesArray = JSON.parse(localStorage.getItem("notesRecord"));
+    //console.log(notesArray.length);
+    if (notesArray == null || notesArray.notesArray == null)
+
+    // alertMessage("Notes not found", "warning");
+        return null;
+
+    for (let i = 0; i < notesArray.notesArray.length; i++) {
+        let title = notesArray.notesArray[i].title;
+        let description = notesArray.notesArray[i].description;
+        //console.log(description)
+        createNotesElement(title, description);
+    }
+    return notesArray;
+
+
+}
+
+/*
+Delete Notes deleteNotes()
+*/
+
+function deleteNotes() {
+
+    this.parentNode.parentNode.remove();
+    // alertMessage("Notes deleted successfully", "success");
+    alert('Delete Algo Here');
 }
