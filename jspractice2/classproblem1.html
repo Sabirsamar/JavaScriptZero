@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let arr2 = [];
+
+        function pushNumber() {
+            for (let i = 1; i <= 10; i++) {
+                let userInput = parseInt(prompt("Enter Number", ""));
+                if (isNaN(userInput)) return false;
+                arr2.push(userInput);
+            }
+            console.log(arr2);
+            let sum = 0;
+            let smallest = arr2[0];
+            let greatest = arr2[0];
+            for (let i = 0; i < arr2.length; i++) {
+                if (arr2[i] < smallest) smallest = arr2[i];
+                if (arr2[i] > greatest) greatest = arr2[i];
+            }
+            sum = smallest + greatest;
+            console.log(sum);
+        }
+        pushNumber()
+
+
+        // let arr = [6, 7, 8, -9, 11, 15, 11];
+        // let sum = 0;
+        // let smallest = arr[0];
+        // let greatest = arr[0];
+
+        // for (let i = 0; i < arr.length; i++) {
+        //     if (arr[i] < smallest) {
+        //         smallest = arr[i];
+        //     }
+        //     if (arr[i] > greatest) {
+        //         greatest = arr[i];
+        //     }
+        // }
+        // sum = smallest + greatest;
+        // console.log(sum);
+    </script>
+</body>
+
+</html>

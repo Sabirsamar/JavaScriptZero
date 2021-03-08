@@ -122,7 +122,7 @@ function getNotes() {
     //console.log(notesArray.length);
     if (notesArray == null || notesArray.notesArray == null)
 
-    // alertMessage("Notes not found", "warning");
+        // alertMessage("Notes not found", "warning");
         return null;
 
     for (let i = 0; i < notesArray.notesArray.length; i++) {
@@ -132,8 +132,6 @@ function getNotes() {
         createNotesElement(title, description);
     }
     return notesArray;
-
-
 }
 
 /*
@@ -142,7 +140,32 @@ Delete Notes deleteNotes()
 
 function deleteNotes() {
 
+    let tempthis = this.parentNode.childNodes[0].innerText;
+    console.log(tempthis);
     this.parentNode.parentNode.remove();
-    // alertMessage("Notes deleted successfully", "success");
-    alert('Delete Algo Here');
+    
+    let noteIndex = searchNotes(tempthis);
+    deletelocalstorage(noteIndex);
+    alertMessage("Notes Deleted", "success");
+
+
+}
+
+function deletelocalstorage(index){
+    let getLocalData = JSON.parse(localStorage.getItem("notesRecord"));
+        getLocalData.notesArray.splice(index,1);
+        localStorage.setItem("notesRecord", JSON.stringify(getLocalData));
+}
+
+function searchNotes(notesTitle) {
+    let getLocalData = JSON.parse(localStorage.getItem("notesRecord"));
+    for (let i = 0; i < getLocalData.notesArray.length; i++) {
+        let title = getLocalData.notesArray[i].title;
+        if(title == notesTitle) {
+            return i;
+        }
+        //let description = getLocalData.notesArray[i].description;
+
+
+    }
 }
