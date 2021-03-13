@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+</head>
+
+<body>
+    <script>
+        function checkPalindrome(inputNumber) {
+            let numLength = inputNumber.length;
+            for (let i = 0; i < numLength / 2; i++) {
+                if (inputNumber[i] != inputNumber[numLength - i - 1]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        let inputNumber = prompt("Enter Number","");
+        if (checkPalindrome(inputNumber) == true)
+            document.write(`${inputNumber} is palindrome!`);
+        else
+            document.write(`${inputNumber} is not palindrome`);
+    </script>
+</body>
+
+</html>

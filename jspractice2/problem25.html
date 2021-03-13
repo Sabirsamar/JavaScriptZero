@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ratio</title>
+</head>
+<body>
+    <script>
+        function calcRatio(number1, number2){
+            return number1/number2;
+        }
+        
+        let positiveCount = 0, negativeCount = 0, zeroCount = 0, ratio;
+        arr = [-4, 3, -9, 0, 4, 1];
+        for(let i=0; i < arr.length; i++){
+            if(arr[i] > 0) {
+                positiveCount++;
+            }
+            else if (arr[i] < 0) {
+                negativeCount++;
+            }
+            else {
+                zeroCount++;
+            }
+        }
+        document.write('Ratio of positive number is : ' + calcRatio(positiveCount,arr.length).toFixed(6) + "<br/>");
+        document.write('Ratio of negative number is : ' + calcRatio(negativeCount,arr.length).toFixed(6) + "<br/>");
+        document.write('Ratio of zero presents in array is : ' + calcRatio(zeroCount,arr.length).toFixed(6) + "<br/>");
+        
+    </script>
+</body>
+</html>

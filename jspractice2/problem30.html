@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArmStrong Number</title>
+</head>
+
+<body>
+    <script>
+        function isArmstrong(inputNumber) {
+            try {
+                inputNumber = prompt("Enter Number", "");
+                if (isNaN(inputNumber) || inputNumber == null)
+                    throw new Error('Please Enter The Number!');
+                let inpSum = 0;
+                for (let i = 0; i < inputNumber.length; i++) {
+                    inpSum += inputNumber[i] ** inputNumber.length;
+                }
+                if (inpSum == inputNumber) {
+                    document.write(`Entered Number ${inputNumber} is an armstrong number.`);
+                } else {
+                    document.write(`Entered Number ${inputNumber} is not an armstrong number.`);
+                }
+            }
+            catch (error) {
+                document.write("Errors found: " + error.message);
+            }
+
+        }
+        isArmstrong();
+    </script>
+</body>
+
+</html>

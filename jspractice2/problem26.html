@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function secondLargestElement() {
+            let = inputArray = [];
+            for (let i = 1; i <= 5; i++) {
+                let inputNumber = parseInt(prompt("Please Enter Number", ""));
+                if (isNaN(inputNumber)) return false;
+                inputArray.push(inputNumber);
+            }
+            console.log(inputArray);
+            let largest = inputArray[0];
+            let secondLargest = inputArray[0];
+            for (let j = 0; j < inputArray.length; j++) {
+                if (inputArray[j] > largest) {
+                    largest = inputArray[j];
+                }
+                else if (inputArray[j] < largest && inputArray[j] > secondLargest) {
+                    secondLargest = inputArray[j];
+                }
+            }
+            document.write(secondLargest);
+        }
+        secondLargestElement();
+//inp validation
+    </script>
+</body>
+
+</html>

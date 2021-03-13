@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vowels & Consonent Count</title>
+</head>
+
+<body>
+    <script>
+        function characterCount(stringChar) {
+            try {
+
+                stringChar = prompt("Enter words to calculate vowel & Consonent");
+                if (stringChar == "" || typeof stringChar != "string")
+                    throw new Error('Please Enter The String!');
+                stringChar = stringChar.toLocaleLowerCase();
+                let vowelCount = 0, consonentCount = 0;
+
+                for (let i = 0; i < stringChar.length; i++) {
+                    if (stringChar[i] == "a" || stringChar[i] == "e" || stringChar[i] == "i"
+                        || stringChar[i] == "o" || stringChar[i] == "u") {
+                        vowelCount++;
+                    }
+                    else if (stringChar[i] >= "a" && stringChar[i] <= "z") {
+                        consonentCount++;
+                    }
+                }
+                document.write('You Entered: ' + stringChar + "<br/>");
+                document.write('count of vowel is: ' + vowelCount + ' And count of consonent is: ' + consonentCount);
+            }
+            catch (error) {
+                document.write("Errors found: " + error.message);
+            }
+        }
+        characterCount();
+    </script>
+</body>
+
+</html>
