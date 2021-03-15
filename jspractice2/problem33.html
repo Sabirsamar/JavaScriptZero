@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merge Array</title>
+</head>
+
+<body>
+    <script>
+        function mergeArr(arr1, arr2) {
+            for (let i = 0; i < arr1.length; i++) {
+                arr2.push(arr1[i]);
+            }
+            return arr2;
+        }
+
+        function mergeResult() {
+            let array1 = [2, 4, 5, 3, 5],
+                array2 = [3, 5, 4, 2],
+                array3 = [];
+            array3 = mergeArr(array1, array2);
+            console.log((array3));
+        }
+        mergeResult();
+    </script>
+</body>
+
+</html>

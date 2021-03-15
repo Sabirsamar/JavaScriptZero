@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pythagorean Triplet</title>
+</head>
+
+<body>
+    <script>
+        function PythagoreanTriplet(a, b) {
+            if (a < b) {
+                let c = a * a + b * b;
+                return c;
+            } else {
+                return false;
+            }
+        }
+
+        function checkPythagorean() {
+            let num1 = 2,
+                num2 = 3;
+            let num3 = PythagoreanTriplet(num1, num2);
+            num3 = Math.sqrt(num3);
+            console.log(num3);
+        }
+        checkPythagorean();
+    </script>
+</body>
+
+</html>
